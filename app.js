@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-*/
+ -------------------------
 
 var express = require("express");
 var app = express();
@@ -52,6 +52,42 @@ app.get("/", (req, res) => {
 const PORT = 5000;
 app.listen(PORT, (req, res) => {
   console.log(`Server is running on https://localhost:${PORT}`);
+});
+
+module.exports = app;
+ --------------------------
+*/
+
+var express = require("express");
+var app = express();
+
+const PORT = 6000;
+
+app.get("/", (req, res) => {
+  res.send("Welcome to homepage!");
+});
+
+app.post("/submit", (req, res) => {
+  res.send("Submitted successfully");
+});
+
+app.get("/user/:userId", (req, res) => {
+  var userId = req.params.userId;
+  res.send(` User is ${userId}`);
+});
+
+app.put("/user/:userId", (req, res) => {
+  var userId = req.params.userId;
+  res.send(`User ${userId} updated successfully`);
+});
+
+app.delete("/user/:userId", (req, res) => {
+  var userId = req.params.userId;
+  res.send(`User ${userId} deleted successfully`);
+});
+
+app.listen(PORT, () => {
+  console.log("listening on port ${PORT}");
 });
 
 module.exports = app;
