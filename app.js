@@ -1,3 +1,4 @@
+/*
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -36,6 +37,21 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+module.exports = app;
+*/
+
+var express = require("express");
+var app = express();
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Homepage");
+});
+
+const PORT = 5000;
+app.listen(PORT, (req, res) => {
+  console.log(`Server is running on https://localhost:${PORT}`);
 });
 
 module.exports = app;
